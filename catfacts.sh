@@ -11,7 +11,7 @@ function displayFact() {
 EOT
 }
 PYTHONIOENCODING=utf8
-fact=$(curl -s http://catfacts-api.appspot.com/api/facts|python -c "import sys, json; print json.load(sys.stdin)['facts'][0]")
+fact=$(curl -sX GET --header 'Accept: application/json' 'https://catfact.ninja/fact'|python -c "import sys, json; print json.load(sys.stdin)['fact']")
 
 displayFact "$fact"
 
